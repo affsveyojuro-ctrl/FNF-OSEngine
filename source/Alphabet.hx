@@ -197,7 +197,6 @@ class Alphabet extends FlxSpriteGroup
 	var xPos:Float = 0;
 	public var curRow:Int = 0;
 	var dialogueSound:FlxSound = null;
-	private static var soundDialog:Sound = null;
 	var consecutiveSpaces:Int = 0;
 	public static function setDialogueSound(name:String = '')
 	{
