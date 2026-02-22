@@ -640,22 +640,23 @@ class TitleState extends MusicBeatState
 					//FlxG.sound.music.stop();
 					FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 					FlxG.sound.music.fadeIn(4, 0, 0.7);
-					createCoolText(['OS Engine by'], 45);
+					createCoolText(['Mod Engine by'], 45);
 				case 2:
-					addMoreText('weuz_', 45);
-					addMoreText('nelifs', 45);
-					addMoreText('Cooljer', 45);
+					addMoreText('Ritmix', 45);
+					addMoreText('boyfriend fan', 45);
 				case 3:
 					deleteCoolText();
-					createCoolText(['Forked', 'from'], 15);
+					createCoolText(['Mod', 'To'], 15);
 				case 4:
-					addMoreText('Psych Engine', 45);
+					addMoreText('gamebanana', 45);
+					addMoreText('github', 45);
 				case 6:
 					deleteCoolText();
-					createCoolText(['Psych Engine by'], 45);
-					addMoreText('Shadow Mario',45);
-					addMoreText('RiverOaken',45);
-					addMoreText('bbpanzu',45);
+					createCoolText(['artists by'], 45);
+					addMoreText('i',45);
+					addMoreText('not',45);
+					addMoreText('can',45);
+					addMoreText('find',45);
 				case 8:
 					deleteCoolText();
 					createCoolText([curWacky[0]]);
@@ -664,15 +665,18 @@ class TitleState extends MusicBeatState
 				case 12:
 					deleteCoolText();
 				case 13:
-					addMoreText('Friday');
+					addMoreText('dnb');
 				// credTextShit.visible = true;
 				case 14:
-					addMoreText('Night');
+					addMoreText('all');
 				// credTextShit.text += '\nNight';
 				case 15:
-					addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+					addMoreText('in');
+					
+			    case 16:
+					addMoreText('one');// credTextShit.text += '\nFunkin';
 
-				case 16:
+				case 17:
 					skipIntro();
 			}
 		}
