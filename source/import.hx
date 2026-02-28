@@ -1,18 +1,12 @@
 #if !macro
 //Discord API
-#if DISCORD_ALLOWED
-import backend.Discord;
-#end
-
 //Psych
 #if LUA_ALLOWED
 import llua.*;
 import llua.Lua;
 #end
 
-#if ACHIEVEMENTS_ALLOWED
-import backend.Achievements;
-#end
+
 
 #if sys
 import sys.*;
@@ -21,34 +15,33 @@ import sys.io.*;
 import js.html.*;
 #end
 
-import backend.Paths;
-import backend.Controls;
-import backend.CoolUtil;
-import backend.MusicBeatState;
-import backend.MusicBeatSubstate;
-import backend.CustomFadeTransition;
-import backend.ClientPrefs;
-import backend.Conductor;
-import backend.BaseStage;
-import backend.Difficulty;
-import backend.Mods;
-import backend.Language;
 
-import backend.ui.*; //Psych-UI
+#if !macro
+import Paths;
 
-import objects.Alphabet;
-import objects.BGSprite;
+#if sys
+import sys.*;
+import sys.io.*;
+#end
 
-import states.PlayState;
-import states.LoadingState;
+#if LUA_ALLOWED
+import hxluajit.*;
+import hxluajit.Types;
+import psychlua.*;
+#else
+import psychlua.FunkinLua; // TODO: test and seperate this into LuaUtils
+// import psychlua.LuaUtils;
+import psychlua.HScript;
+// import psychlua.ScriptHandler;
+#end
 
 #if flxanimate
 import flxanimate.*;
 import flxanimate.PsychFlxAnimate as FlxAnimate;
 #end
 
-  //shaders
-
+//so that it doesn't bring up a "Type not found: Countdown"
+import BaseStage.Countdown;
 
 //Flixel
 import flixel.sound.FlxSound;
@@ -57,11 +50,37 @@ import flixel.FlxSprite;
 import flixel.FlxCamera;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
+import flixel.math.FlxRect;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.group.FlxSpriteGroup;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.util.FlxDestroyUtil;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.FlxSubState;
+import flixel.addons.display.FlxGridOverlay;
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.FlxObject;
+import flixel.util.FlxSave;
+import flixel.util.FlxStringUtil;
+
+//others
+import openfl.display.BitmapData;
+import openfl.net.FileFilter;
+import openfl.geom.Rectangle;
+import openfl.utils.Assets as OpenFlAssets;
+import lime.utils.Assets;
+import haxe.Json;
+
+// utils
+import utils.*;
+
+using StringTools;
+#end
+ween;
 import flixel.group.FlxSpriteGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.addons.transition.FlxTransitionableState;
